@@ -1,4 +1,4 @@
-#!/bin/python3.14
+#!/bin/env python
 
 NAME = ""
 letter = ""
