@@ -1,10 +1,10 @@
-#!/bin/python3.14
+#!/bin/env python
 
 NAME = ""
 letter = ""
 print("Vem är du?")
 NAME = input()
-print(f"\nHej ITSX26!\nJag studerar IT- och cybersäkerhet.\nMitt namn är {NAME}.\n Välkommen!\n")
+print(f"\nHej ITSX26!\nJag studerar IT- och cybersäkerhet.\nMitt namn är {NAME}.")
 print("\n--program klart--\n")
 
 
