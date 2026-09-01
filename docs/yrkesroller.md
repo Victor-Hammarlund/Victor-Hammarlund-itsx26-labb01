@@ -13,7 +13,7 @@ och att du har en en mångsidig uppsättning av kompetenser, som nätverkshanter
 
 En riskanalytiker jobbar och ansvarar för att identifiera, analysera och förstå sårbarheter som kan påverka organisationer negativt i olika allvarlighetsgrader.
 Risk analys är en väsentlig del av risk hantering och lägger grunden för härdning och utveckling av säkerhetsåtgärder innan anagonister kan uttnyttja befintliga sårbarheter.
-Som riskanalytiker behöver du kunna identifiera och katlogisera kritiska tillgångar, utvärdera möjliga hot och sårbarhetet, analysra och utvärdera inverkan som hotet kan ha hos en organisation,
+Som riskanalytiker behöver du kunna identifiera och katlogisera kritiska tillgångar, utvärdera möjliga hot och sårbarheteter, analysera och utvärdera inverkan som hotet kan ha hos en organisation,
 utvärdera sannolikeheten för att en sårbarhet utnyttjas, prioretera risker att hantera, utveckla strategier
 för att mitigera utnyttjande av sårbarheter, och att dokumentera riskerna, deras inverkan och strategier för mitegering.
 
