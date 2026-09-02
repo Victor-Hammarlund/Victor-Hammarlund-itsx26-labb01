@@ -136,3 +136,14 @@ Lämna in följande:
 - `docs/05-reflektion.md`
 
 **Kom ihåg:** Säkerhet är en del av arbetssättet, inte en kontroll på slutet.
+
+
+## om mig
+
+- NAMN : Victor Lars Hammarlund
+- KLASS : ITSx26
+- DATUM : 2026-08-26
+
+## Motivation ##
+
+Jag sökte till programmet pågrund av lovande jobb möjligheter, och chansen att få jobba med mer tekniska uppgifter än vad jag har på med dem senaste 10 åren (Restaurang) och få göra något jag brinner för.
