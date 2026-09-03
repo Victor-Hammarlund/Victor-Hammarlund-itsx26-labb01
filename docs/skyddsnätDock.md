@@ -19,6 +19,6 @@
 
 ## Summery
 
-allt arbete som inte är hemligt laddas upp till GitHub plus system konfigurationer
+allt arbete som inte är hemligt laddas upp till GitHub plus system konfigurationsdokument
 om 100% återställning av systemet önskas. samt recovery snapshot görs genom Oracle cloud
 
