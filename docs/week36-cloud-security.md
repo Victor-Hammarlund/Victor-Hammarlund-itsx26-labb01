@@ -12,13 +12,13 @@
 
 ## Del 4 – Utforska Linux (Gäller alla!)
 - ls -la :
-Skriver ut en lista av alla filer incl osynsliga filer till terminalen.
-Hotaktör kan en snabb få överblick för vad dem kan göra på systemet
+Skriver ut en lista av alla filer incl osynsliga filer som ligger i den aktuella katalogen.
+En användare kan snabbt få en överblick subkataloger, filer och rättigherna.
 ls -la ger en aktör överblick på rättigheter och ser hemliga filer, koppling till Konfidentialitet  
 - whoami :
 skriver ut användarnamner på användaren som är inloggad.
-snabb blick på vad kontot kan ha för behörigheter.
-Hotaktören får snabb koll på vilket konto dem har loggat in med och vad dem kan ha för behörgheter påverkar konfidentialitet
+snabb blick på vem man är inloggad som.
+en hotaktör får koll på vilket konto dem har loggat in med och vad dem möjligtvis har för behörgheter,kan kopplas till konfidentialitet.
 - date   : visar eller sätter systemets datum och tid. 
 - id     : 
 visar användare och grupp information för varje specifierad användare eller nuvarande användare.
