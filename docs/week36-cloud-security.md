@@ -10,21 +10,30 @@
 - uname med option -a skriver ut all system information som kernel name, os version osv. "Linux instance-20260903-0851 7.0.0-1009-oracle #9-Ubuntu SMP PREEMPT Thu Jul 23 02:43:14 UTC 2026 x86_64 GNU/Linux"
 - uptime skriver ut hur länge servern/sytemet varit igång. i mitt fall 09h:54m:32s
 
-## Del 4 – Utforska Linux (Gäller alla!)
+## Del 4 – Utforska Linux
 - ls -la :
+
 Skriver ut en lista av alla filer incl osynsliga filer till terminalen.
 Hotaktör kan en snabb få överblick för vad dem kan göra på systemet
 ls -la ger en aktör överblick på rättigheter och ser hemliga filer, koppling till Konfidentialitet  
 - whoami :
+
 skriver ut användarnamner på användaren som är inloggad.
 snabb blick på vad kontot kan ha för behörigheter.
 Hotaktören får snabb koll på vilket konto dem har loggat in med och vad dem kan ha för behörgheter påverkar konfidentialitet
-- date   : visar eller sätter systemets datum och tid. 
+- date   :
+
+visar eller sätter systemets datum och tid. 
+date ger systemets adminaströr möjlighet att kolla datum i olika format och kolla framtida datum med enkla options, date har även stor nytta i många fall i skripting.
+Systemets datum och tid kan blir nyttjade av bakrundsprocesser för automatisering, har en hotaktör möjlighet att göra ändringar i datum och tid så hotas integriteten.
 - id     : 
+
 visar användare och grupp information för varje specifierad användare eller nuvarande användare.
-Kan ge en hotaktör information om vilka användare som finns och vilka grupper dem tillhör för att veta vilka konton dem kan sikta på, konfidentialiteten utsätts för aktören får tillgång till lista av användera och deras gruppmedlemskap.
+Kan ge en hotaktör information om specifika användare som finns och vilka grupper dem tillhör för att veta vilka konton dem kan sikta på, konfidentialiteten utsätts för aktören får tillgång till lista av användaren och deras gruppmedlemskap.
 - groups :
+
 skriver ut grupp medlemskap för varje användaren
+
 
 
 
