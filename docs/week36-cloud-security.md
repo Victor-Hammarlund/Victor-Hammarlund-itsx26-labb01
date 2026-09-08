@@ -211,7 +211,7 @@ Servern eller maskinen är tillgängling när du behöver den, brandvägg rätt 
 ### Vad fungerade bra?
 skapa moln instans, ssh:a till instansen, interagera och göra rollback med skapad backup.
 ### Vad var svårt?
-Reflektion
+Att förstå vad som menades med cleanup och varför det är viktigt.
 ### Vad lärde jag mig?
 lärde mig skapa virtualla maskinen i molnet. 
 
