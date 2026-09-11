@@ -1,14 +1,19 @@
 # Week 36 OCI Cloud Security Lab
 
-## Del 1-2
 
+## MILJÖ
+- Oracle Cloud
+- OS : Linux : Ubuntu : 26.04
+- public ip 79.76.53.124
+- IMAGE : Canonical-Ubuntu-26.04-2026.08.17-0
+- INLOGGNING : SSH : KEYPAIR
 ## Del 3 – Logga in med SSH
 
-- Whoami visar vem som användaren är loggad in i och i det här fallet "ubuntu".
-- Hostname visar eller sätter systemets host name. i det här fallet "instance-20260903-0851"
-- pwd visar i vilken katalog användaren befinner sig i.
-- uname med option -a skriver ut all system information som kernel name, os version osv. "Linux instance-20260903-0851 7.0.0-1009-oracle #9-Ubuntu SMP PREEMPT Thu Jul 23 02:43:14 UTC 2026 x86_64 GNU/Linux"
-- uptime skriver ut hur länge servern/sytemet varit igång. i mitt fall 09h:54m:32s
+- Whoami visar  "ubuntu".
+- Hostname visar eller sätter host name "instance-20260903-0851"
+- pwd visar /home/ubuntu.
+- uname med option -a. "Linux instance-20260903-0851 7.0.0-1009-oracle #9-Ubuntu SMP PREEMPT Thu Jul 23 02:43:14 UTC 2026 x86_64 GNU/Linux"
+- uptime skriver ut 09h:54m:32s
 
 
 ## Kontroll 1 – Identitet och behörigheter
@@ -211,7 +216,7 @@ Servern eller maskinen är tillgängling när du behöver den, brandvägg rätt 
 ### Vad fungerade bra?
 skapa moln instans, ssh:a till instansen, interagera och göra rollback med skapad backup.
 ### Vad var svårt?
-Reflektion
+att göra anknytningar till CIA-triaden
 ### Vad lärde jag mig?
 lärde mig skapa virtualla maskinen i molnet. 
 
