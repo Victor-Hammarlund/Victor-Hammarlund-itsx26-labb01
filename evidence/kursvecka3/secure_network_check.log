@@ -1,0 +1,18 @@
+[2026-09-17 23:01:44] [INFO] Starting secure network check
+[2026-09-17 23:01:44] [OK] All required commands are available.
+[2026-09-17 23:01:44] [OK] lo is connected
+[2026-09-17 23:01:44] [OK] enp5s0 is connected
+[2026-09-17 23:01:44] [FAIL] example.com could not be resolved
+[2026-09-17 23:01:44] [OK] google.com was resolved successfully
+[2026-09-17 23:01:44] [OK] chasacademy.instructure.com was resolved successfully
+[2026-09-17 23:01:44] [INFO] Starting Test server
+[2026-09-17 23:01:45] [INFO] fetching HTTP from localhost
+[2026-09-17 23:01:45] [OK] Succesfully fetch http from localhost
+[2026-09-17 23:01:45] [INFO] Test server info at ../docs/secure_network_check_log_extended.log
+[2026-09-17 23:01:45] [INFO] Fetching listening ports
+[2026-09-17 23:01:45] [INFO] Number of open ports: 28 | More at evidence file
+[2026-09-17 23:01:45] [INFO] Secure network check completed
+[2026-09-17 23:01:45] [INFO] Checking if test server is running
+[2026-09-17 23:01:45] [INFO] Shutting down test server
+[2026-09-17 23:01:45] [OK] Test server stopped
+e

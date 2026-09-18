@@ -1,0 +1,72 @@
+////NETWORK INTERFACES & ROUTE////
+lo               UNKNOWN        [REDACTED]/8 ::1/128 
+enp5s0           UP             [REDACTED]/24 fdaa:bbcc:ddee:0:9896:c645:8bbf:9e70/128 fdaa:bbcc:ddee:0:7815:d4f5:e6e1:99c6/64 fe80::6a3:8d89:25db:cf5e/64 
+
+default via [REDACTED] dev enp5s0 proto dhcp src [REDACTED] metric 100 
+[REDACTED]/24 dev enp5s0 proto kernel scope link src [REDACTED] metric 100 
+#////LOCAL TEST SERVER////
+  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+                                 Dload  Upload  Total   Spent   Left   Speed
+
+  0      0   0      0   0      0      0      0                              0
+100    757 100    757   0      0 254.8k      0                              0
+100    757 100    757   0      0 225.2k      0                              0
+100    757 100    757   0      0 201.5k      0                              0
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+:root {
+color-scheme: light dark;
+}
+</style>
+<title>Directory listing for /</title>
+</head>
+<body>
+<h1>Directory listing for /</h1>
+<hr>
+<ul>
+<li><a href="%24EVIDENCE%0A">$EVIDENCE
+</a></li>
+<li><a href="basic_config_check.py">basic_config_check.py</a></li>
+<li><a href="evidence_collector.sh">evidence_collector.sh</a></li>
+<li><a href="hello.sh">hello.sh</a></li>
+<li><a href="network-check.log">network-check.log</a></li>
+<li><a href="secure_network_check.sh">secure_network_check.sh</a></li>
+<li><a href="security_check.sh">security_check.sh</a></li>
+<li><a href="test.sh">test.sh</a></li>
+<li><a href="trafikmix.sh">trafikmix.sh</a></li>
+</ul>
+<hr>
+</body>
+</html>
+////LISTENING PORTS////
+udp   UNCONN 0      0                            [REDACTED]:[PORT]       [REDACTED]:*   
+udp   UNCONN 0      0                                [REDACTED]:[PORT]       [REDACTED]:*   
+udp   UNCONN 0      0                                [REDACTED]:[PORT]       [REDACTED]:*   
+udp   UNCONN 0      0                                [REDACTED]:[PORT]      [REDACTED]:*   
+udp   UNCONN 0      0                             [REDACTED]:[PORT]         [REDACTED]:*   
+udp   UNCONN 0      0                          [REDACTED]%lo:[PORT]         [REDACTED]:*   
+udp   UNCONN 0      0                              [REDACTED]:[PORT]        [REDACTED]:*   
+udp   UNCONN 0      0                                   [::]:[PORT]          [::]:*   
+udp   UNCONN 0      0                                   [::]:[PORT]          [::]:*   
+udp   UNCONN 0      0                                  [::[PORT]]:[PORT]           [::]:*   
+udp   UNCONN 0      0      [fe80::[PORT]a3:[PORT]d89:[PORT]db:cf5e]%enp5s0:[PORT]           [::]:*   
+udp   UNCONN 0      0                                      *:[PORT]             *:*   
+udp   UNCONN 0      0                                      *:[PORT]            *:*   
+tcp   LISTEN 0      128                              [REDACTED]:[PORT]      [REDACTED]:*   
+tcp   LISTEN 0      4096                          [REDACTED]:[PORT]         [REDACTED]:*   
+tcp   LISTEN 0      4096                           [REDACTED]:[PORT]        [REDACTED]:*   
+tcp   LISTEN 0      4096                       [REDACTED]%lo:[PORT]         [REDACTED]:*   
+tcp   LISTEN 0      128                            [REDACTED]:[PORT]      [REDACTED]:*   
+tcp   LISTEN 0      511                            [REDACTED]:[PORT]      [REDACTED]:*   
+tcp   LISTEN 0      511                            [REDACTED]:[PORT]      [REDACTED]:*   
+tcp   LISTEN 0      128                            [REDACTED]:[PORT]      [REDACTED]:*   
+tcp   LISTEN 0      5                              [REDACTED]:[PORT]       [REDACTED]:*   
+tcp   LISTEN 0      128                            [REDACTED]:[PORT]      [REDACTED]:*   
+tcp   LISTEN 0      511                            [REDACTED]:[PORT]       [REDACTED]:*   
+tcp   LISTEN 0      4096                             [REDACTED]:[PORT]       [REDACTED]:*   
+tcp   LISTEN 0      50                                     *:[PORT]             *:*   
+tcp   LISTEN 0      4096                               [::[PORT]]:[PORT]           [::]:*   
+tcp   LISTEN 0      4096                                [::]:[PORT]          [::]:*   
