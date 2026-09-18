@@ -2,7 +2,7 @@
 
 
 #Variables
-EVIDENCE="../docs/secure_network_check_log_extended.log"
+EVIDENCE="../evidence/secure_network_check_log_extended.log"
 LOG_FILE="../docs/secure_network_check.log"
 TARGET_DOMAIN_ARR=("example.com" "google.com" "chasacademy.instructure.com")
 TARGET_PORT=8080
@@ -30,7 +30,6 @@ log_message() {
 	FAIL)
 	((FAILED++))
 	;;
-
 	esac
 	
 
