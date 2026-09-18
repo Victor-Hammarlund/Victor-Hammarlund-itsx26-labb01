@@ -5,9 +5,7 @@
 ### Nätverksinterface:
 -  lo : Loopback, datorns interna kommunikation
 - enp5s0 : bunden kommunikation mellan pc och gateway 
-<p>
-<img src="">
-<p>
+
 
 - Privat IP pekar till klienter i ett LAN nätverk.
 - Local Adress kallas också localhost och är maskinen själv och används ofta för testing av en service localt.
