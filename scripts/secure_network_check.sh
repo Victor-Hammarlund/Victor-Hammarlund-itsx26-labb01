@@ -3,7 +3,7 @@
 
 #Variables
 EVIDENCE="../evidence/secure_network_check_log_extended.log"
-LOG_FILE="../docs/secure_network_check.log"
+LOG_FILE="../evidence/secure_network_check.log"
 TARGET_DOMAIN_ARR=("example.com" "google.com" "chasacademy.instructure.com")
 TARGET_PORT=8080
 PID_TEST_SERVER=0
