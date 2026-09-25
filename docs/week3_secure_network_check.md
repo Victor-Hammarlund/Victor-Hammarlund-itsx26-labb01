@@ -5,9 +5,7 @@
 ### Nätverksinterface:
 -  lo : Loopback, datorns interna kommunikation
 - enp5s0 : bunden kommunikation mellan pc och gateway 
-<p>
-<img src="">
-<p>
+
 
 - Privat IP pekar till klienter i ett LAN nätverk.
 - Local Adress kallas också localhost och är maskinen själv och används ofta för testing av en service localt.
@@ -24,7 +22,7 @@ Lärande miljön använder en annan distribution och kan visa avvikelser i outpu
 | Routing | <img src="./screenshots_week36_cloud/ip_route.png"> | standard vägen är 192.168.0.1 vilket i det här fallet är routen. |
 | DNS| <img src="./screenshots_secure_net_check/dns_dig.png"> | dig är ett sätt att få dns information för en specifik domän, DNS är ett system för göra sökningen enklare, DNS översätter domännamn till IP adresser.  |
 |Portar & Tjänster| <img src="./screenshots_secure_net_check/ports_services.png"> | port 53 lyssnar här på localhost, vilket är del av systemd-resolved vilket cachar IP adresser till servrar. |
-| Lokal tjänst| se bild 1-2 | curl mot localhost ger endast resultat om något servar något från localhost.  |
+| Lokal tjänst| se bevis i secure_network_check_extended.log | curl mot localhost ger endast resultat om något servar något från localhost.  |
 | Process eller systemstatus| <img src="./screenshots_secure_net_check/sytemctl_response_a.png">| ssytemctl visar att firewalld är aktiv och körs. Firewalld är ett verktyg för brandväggshantering.|
 
 
