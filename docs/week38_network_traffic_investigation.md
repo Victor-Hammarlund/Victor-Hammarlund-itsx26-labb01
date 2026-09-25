@@ -231,7 +231,7 @@ Under commit-processen kan filnamn och hashvärden inkluderas i commit-meddeland
 
 Kombinationen av filnamn, hashvärden, paketnummer och versionshantering bidrar till en tydlig och verifierbar kedja av digital bevishantering.
 
-## Tillgänglighet
+## Tillgänglighet.
 
 ### dns
 
