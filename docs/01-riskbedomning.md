@@ -26,7 +26,7 @@ Beskriv kort hur du prioriterade riskerna.
 
    ##### Prioritet : LÅG-MEDEL
 
-1. programmet tar ingen input från användaren:
+2. programmet tar ingen input från användaren:
   
     Den tar ingen input av personen som kör programmet,
     låg till ingen CIA påverkan 
@@ -35,7 +35,7 @@ Beskriv kort hur du prioriterade riskerna.
 
     ##### Prioritet : LÅG
 
-2. ingen information exoneras när koden körs vanligt:
+3. ingen information exoneras när koden körs vanligt:
   
     Vid program körning produceras ingen information till terminalen som skulle göra systemet eller användaren sårbar för något hot. Låg till ingen CIA påverkan
 
@@ -43,11 +43,16 @@ Beskriv kort hur du prioriterade riskerna.
 
     ##### Prioritet : LÅG
 
-3. Programmet ändrar inte på några filer:
+4. Programmet ändrar inte på några filer:
    
     Programet utsätter inte någon påverkam gällande integritet, systemetets riktighet är oberörd.
 
     Åtgärd: Ingen åtgärd nödvändig.
 
     ##### Prioritet : LÅG
+
+### intro.py
+'
+#### Observationer:
+
 
