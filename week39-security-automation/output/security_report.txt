@@ -1,0 +1,127 @@
+╔═════════════════════════════════════════════════════╗
+
+                
+║SECURITY REPORT                                      ║
+                
+File Analized: access                                     
+
+                
+These IP's are logged
+ --------------------
+  203.0.113.15
+  192.0.2.25
+  203.0.113.15
+  198.51.100.44
+ 
+
+                
+Possible IOC's
+ --------------------
+ 203.0.113.15 : occurs 2 times
+ 198.51.100.44 : occurs 1 times
+ 
+
+                
+ --------------------
+                
+Observation:
+                
+Number of IP's that match the IOC list: 2
+                
+ --------------------
+                
+Conclusion:
+                
+IP-adresses listed in the IOC dataset occur in this log
++and might need further investigation
+                
+ --------------------
+                
+
+                
+╚═════════════════════════════════════════════════════╝
+╔═════════════════════════════════════════════════════╗
+
+                
+║SECURITY REPORT                                      ║
+                
+File Analized: Authentication                                     
+
+                
+These IP's are logged
+ --------------------
+  203.0.113.15
+  203.0.113.15
+  203.0.113.15
+  192.0.2.25
+  198.51.100.44
+  skipped 1 line(s). Missing src field
+ 
+
+                
+Possible IOC's
+ --------------------
+ 203.0.113.15 : occurs 3 times
+ 198.51.100.44 : occurs 1 times
+ 
+
+                
+ --------------------
+                
+Observation:
+                
+Number of IP's that match the IOC list: 2
+                
+ --------------------
+                
+Conclusion:
+                
+IP-adresses listed in the IOC dataset occur in this log
++and might need further investigation
+                
+ --------------------
+                
+
+                
+╚═════════════════════════════════════════════════════╝
+╔═════════════════════════════════════════════════════╗
+
+                
+║SECURITY REPORT                                      ║
+                
+File Analized: firewall                                     
+
+                
+These IP's are logged
+ --------------------
+  192.0.2.25
+  203.0.113.15
+  203.0.113.99
+ 
+
+                
+Possible IOC's
+ --------------------
+ 203.0.113.15 : occurs 1 times
+ 203.0.113.99 : occurs 1 times
+ 
+
+                
+ --------------------
+                
+Observation:
+                
+Number of IP's that match the IOC list: 2
+                
+ --------------------
+                
+Conclusion:
+                
+IP-adresses listed in the IOC dataset occur in this log
++and might need further investigation
+                
+ --------------------
+                
+
+                
+╚═════════════════════════════════════════════════════╝
