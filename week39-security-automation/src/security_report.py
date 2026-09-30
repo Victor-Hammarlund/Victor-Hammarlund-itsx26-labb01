@@ -40,16 +40,65 @@ def getLog(path, name):
     return logs
 
 # ----------------------------------------#
-def getBadActionFields(fileName):
-    badActionFields = []
-    for path, name in paths.items():
-        if name == fileName:
-            
-            with open(path,"r", encoding="utf-8") as log:
-                for line in log:
-                    if "Failed" in line:
-                        badActionFields.append(line)
-    return badActionFields
+def getBadActionFields(fileName, ioc_list):
+    def getBadActionFields(fileName, ioc_list):
+        for path, name in paths.items():
+            if name == fileName:
+
+                suspicious = []
+
+                with open(path, "r", encoding="utf-8") as log:
+                    for line in log:
+
+                        # auth.log
+                        if fileName == "Authentication":
+                            if "Failed" in line:
+                                for ip in ioc_list:
+                                    if ip in line:
+                                        suspicious.append(ip)
+
+                        # access.log
+                        elif fileName == "access":
+                            if "status=401" in line:
+                                for ip in ioc_list:
+                                    if ip in line:
+                                        suspicious.append(ip)
+
+                        # firewall.log
+                        elif fileName == "firewall":
+                            if "DENY" in line or "DROP" in line:
+                                for ip in ioc_list:
+                                    if ip in line:
+                                        suspicious.append(ip)
+
+                counts = occurance(ioc_list, suspicious)
+
+                if not counts:
+                    return f"No IOC activity found in {fileName}"
+
+                result = []
+
+                if fileName == "Authentication":
+                    for ip, count in counts.items():
+                        result.append(
+                            f"{ip}: {count} failed login attempt(s)"
+                        )
+
+                elif fileName == "access":
+                    for ip, count in counts.items():
+                        result.append(
+                            f"{ip}: {count} unauthorized request(s)"
+                        )
+
+                elif fileName == "firewall":
+                    for ip, count in counts.items():
+                        result.append(
+                            f"{ip}: {count} denied/dropped connection(s)"
+                        )
+
+                return "\n".join(result)
+
+    return f"File '{fileName}' not found"
                     
     
     #ip failed to login x times as: [user1,user2,user3,user n ...]
@@ -67,7 +116,7 @@ def writeReport(fileName,loggedIps,badIps, IOC):
                 \n║SECURITY REPORT                                      ║
                 \nFile Analized: {fileName}                                     \n
                 \nThese IP's are logged\n --------------------\n {loggedIps}\n
-                \nPossible IOC's\n --------------------\n {badIps}\n
+                \nPossible IOC's\n --------------------\n {getBadActionFields(fileName,getSuspiciousIps() )}\n
                 \n --------------------
                 \nObservation:
                 \nNumber of IP's that match the IOC list: {IOC}
@@ -78,9 +127,7 @@ def writeReport(fileName,loggedIps,badIps, IOC):
                 \n
                 \n╚═════════════════════════════════════════════════════╝''')
         out.write(f"{output}\n")     
-        actionfields = getBadActionFields(fileName)
-        for i in actionfields:
-            print(i)
+       # print(f"\n{getBadActionFields(fileName,getSuspiciousIps() )}\n")
 # ----------------------------------------#
 
 def clearOutputFile():
@@ -211,3 +258,4 @@ Datasetet visar endast förekomst och bekräftar inte skadlig aktivitet.
 Security significance:
 Matchningen kan hjälpa till att prioritera fortsatt analys.
 '''
+
