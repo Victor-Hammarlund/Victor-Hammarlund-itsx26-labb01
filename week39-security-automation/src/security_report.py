@@ -40,8 +40,8 @@ def getLog(path, name):
     return logs
 
 # ----------------------------------------#
+
 def getBadActionFields(fileName, ioc_list):
-    def getBadActionFields(fileName, ioc_list):
         for path, name in paths.items():
             if name == fileName:
 
@@ -70,6 +70,8 @@ def getBadActionFields(fileName, ioc_list):
                                 for ip in ioc_list:
                                     if ip in line:
                                         suspicious.append(ip)
+                            
+                                
 
                 counts = occurance(ioc_list, suspicious)
 
@@ -97,8 +99,7 @@ def getBadActionFields(fileName, ioc_list):
                         )
 
                 return "\n".join(result)
-
-    return f"File '{fileName}' not found"
+        return f"File '{fileName}' not found"
                     
     
     #ip failed to login x times as: [user1,user2,user3,user n ...]
@@ -109,22 +110,21 @@ def writeReport(fileName,loggedIps,badIps, IOC):
     if IOC < 1:
         str_conclusion += f"No IP from IOC-list logged in the {fileName} logs"
     else:
-        str_conclusion += f"IP-adresses listed in the IOC dataset occur in this log\n+and might need further investigation"
+        str_conclusion += f"IP-adresses listed in the suspicious dataset occur in this log\nand might need further investigation"
     
     with open(pathOutput, "a", encoding="utf-8") as out:
         output = (f'''╔═════════════════════════════════════════════════════╗\n
                 \n║SECURITY REPORT                                      ║
                 \nFile Analized: {fileName}                                     \n
-                \nThese IP's are logged\n --------------------\n {loggedIps}\n
-                \nPossible IOC's\n --------------------\n {getBadActionFields(fileName,getSuspiciousIps() )}\n
+                \nThese IP's are logged\n --------------------\n{loggedIps}\n
+                \nPossible IOC's\n --------------------\n{getBadActionFields(fileName,getSuspiciousIps() )}
                 \n --------------------
                 \nObservation:
-                \nNumber of IP's that match the IOC list: {IOC}
+                \nTimes IOC-IPs occur in the log: {IOC}
                 \n --------------------
                 \nConclusion:
                 \n{str_conclusion}
                 \n --------------------
-                \n
                 \n╚═════════════════════════════════════════════════════╝''')
         out.write(f"{output}\n")     
        # print(f"\n{getBadActionFields(fileName,getSuspiciousIps() )}\n")
