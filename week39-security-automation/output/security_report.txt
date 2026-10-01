@@ -8,7 +8,7 @@ File Analized: access
                 
 These IP's are logged
  --------------------
-  203.0.113.15
+ 203.0.113.15
   192.0.2.25
   203.0.113.15
   198.51.100.44
@@ -17,27 +17,25 @@ These IP's are logged
                 
 Possible IOC's
  --------------------
- 203.0.113.15 : occurs 2 times
- 198.51.100.44 : occurs 1 times
- 
+203.0.113.15: 4 unauthorized request(s)
+Non IOC failed attempt(s)
+0
 
                 
  --------------------
                 
 Observation:
                 
-Number of IP's that match the IOC list: 2
+Times IOC-IPs occur in the log: 2
                 
  --------------------
                 
 Conclusion:
                 
-IP-adresses listed in the IOC dataset occur in this log
-+and might need further investigation
+IP-adresses listed in the suspicious dataset occur in this log
+and might need further investigation
                 
  --------------------
-                
-
                 
 ╚═════════════════════════════════════════════════════╝
 ╔═════════════════════════════════════════════════════╗
@@ -50,7 +48,7 @@ File Analized: Authentication
                 
 These IP's are logged
  --------------------
-  203.0.113.15
+ 203.0.113.15
   203.0.113.15
   203.0.113.15
   192.0.2.25
@@ -61,27 +59,26 @@ These IP's are logged
                 
 Possible IOC's
  --------------------
- 203.0.113.15 : occurs 3 times
- 198.51.100.44 : occurs 1 times
- 
+203.0.113.15: 4 failed login attempt(s)
+198.51.100.44: 2 failed login attempt(s)
+Non IOC failed attempt(s)
+0
 
                 
  --------------------
                 
 Observation:
                 
-Number of IP's that match the IOC list: 2
+Times IOC-IPs occur in the log: 2
                 
  --------------------
                 
 Conclusion:
                 
-IP-adresses listed in the IOC dataset occur in this log
-+and might need further investigation
+IP-adresses listed in the suspicious dataset occur in this log
+and might need further investigation
                 
  --------------------
-                
-
                 
 ╚═════════════════════════════════════════════════════╝
 ╔═════════════════════════════════════════════════════╗
@@ -94,7 +91,7 @@ File Analized: firewall
                 
 These IP's are logged
  --------------------
-  192.0.2.25
+ 192.0.2.25
   203.0.113.15
   203.0.113.99
  
@@ -102,26 +99,93 @@ These IP's are logged
                 
 Possible IOC's
  --------------------
- 203.0.113.15 : occurs 1 times
- 203.0.113.99 : occurs 1 times
- 
+203.0.113.15: 1 denied/dropped connection(s)
+203.0.113.99: 1 denied/dropped connection(s)
+Non IOC failed attempt(s)
+0
 
                 
  --------------------
                 
 Observation:
                 
-Number of IP's that match the IOC list: 2
+Times IOC-IPs occur in the log: 2
                 
  --------------------
                 
 Conclusion:
                 
-IP-adresses listed in the IOC dataset occur in this log
-+and might need further investigation
+IP-adresses listed in the suspicious dataset occur in this log
+and might need further investigation
                 
  --------------------
                 
+╚═════════════════════════════════════════════════════╝
+╔═════════════════════════════════════════════════════╗
 
                 
+║SECURITY REPORT                                      ║
+                
+File Analized: noHits                                     
+
+                
+These IP's are logged
+ --------------------
+ 203.0.113.16
+  192.0.2.25
+  203.0.113.16
+  198.51.100.43
+ 
+
+                
+Possible IOC's
+ --------------------
+No IOC-IPs present
+but there were failed attempt(s) from:
+203.0.113.16
+                
+ --------------------
+                
+Observation:
+                
+Times IOC-IPs occur in the log: 0
+                
+ --------------------
+                
+Conclusion:
+                
+No IP from IOC-list logged in the noHits logs.
+But may still contain unautharized attempts
+                
+ --------------------
+                
+╚═════════════════════════════════════════════════════╝
+
+            
+╔═════════════════════════════════════════════════════╗
+
+            
+SUMMARY
+            
+
+            
+203.0.113.15 occurs in following logs:
+	access: 2 times
+	Authentication: 5 times
+	firewall: 6 times
+	noHits: 6 times
+
+198.51.100.44 occurs in following logs:
+	access: 1 times
+	Authentication: 2 times
+	firewall: 2 times
+	noHits: 2 times
+
+203.0.113.99 occurs in following logs:
+	access: 0 times
+	Authentication: 0 times
+	firewall: 1 times
+	noHits: 1 times
+
+            
 ╚═════════════════════════════════════════════════════╝

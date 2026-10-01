@@ -131,7 +131,28 @@ def getBadActionFields(fileName, ioc_list):
                     
     
     #ip failed to login x times as: [user1,user2,user3,user n ...]
+
 # ----------------------------------------#
+
+def patternMatching(ioc_ips):
+    pattern = []
+    for ioc in ioc_ips:
+         result = []
+         match =0
+         for path, name in paths.items():
+            with open(path, "r", encoding="utf-8") as file:
+                for line in file:
+                    if ioc in line:
+                        match += 1
+            result.append(f"{name}: {match} times")
+         pattern.append(f"{ioc} occurs in following logs:\n\t{"\n\t".join(result)}\n")
+                
+    return pattern
+
+    
+
+# ----------------------------------------#
+
 
 def writeReport(fileName,loggedIps,badIps, IOC):
     str_conclusion = ""
@@ -155,7 +176,7 @@ def writeReport(fileName,loggedIps,badIps, IOC):
                 \n --------------------
                 \n╚═════════════════════════════════════════════════════╝''')
         out.write(f"{output}\n")     
-       # print(f"\n{getBadActionFields(fileName,getSuspiciousIps() )}\n")
+    
 # ----------------------------------------#
 
 def clearOutputFile():
@@ -173,7 +194,19 @@ def occurance(ioc,_list):
                 matches[i] = 0
             matches[i] +=1
     return matches
-  
+
+# ----------------------------------------#
+
+def summary(badIps):
+    with open(pathOutput, "a") as result:
+            pattern = patternMatching(badIps)
+            output = (f'''
+            \n╔═════════════════════════════════════════════════════╗\n
+            \nSUMMARY
+            \n
+            \n{"\n".join(pattern)}
+            \n╚═════════════════════════════════════════════════════╝''')
+            result.write(output)
 # ----------------------------------------#
 def checkStructure():
 
@@ -210,7 +243,7 @@ def checkStructure():
             print(f"Missing path or file. Expected path : {pathOutput}")
             print(f"Attempting creation of {pathOutput}")
             try:
-                with open(pathOutput, "w") as file:
+                with open(pathOutput, "a") as file:
                     pass
             except FileExistsError:
                 print(f"File {pathOutput} already exists ... ")
@@ -252,6 +285,8 @@ def main():
         for ip in ips:
             formatedIPs+=f" {ip}\n "
         writeReport(name,formatedIPs, formatedBadIps, len(match_ips))
+    summary(badIps)
+
         
         
     
