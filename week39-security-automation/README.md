@@ -30,11 +30,12 @@ Python 3.13.15
 
 ### Begränsningar 
 
-Programmet som det står nu kollar inte efter om Misstänkta IP-addresser lyckades logga in, kom igenom brandväggen, eller  om dem lyckades hämta data från server. 
+Programmet som det står nu kollar inte efter om Misstänkta IP-addresser lyckades logga in, kom igenom brandväggen, eller  om dem lyckades hämta data från server.
+dock kan man härleda misstänksamma lyckomässiga försök genom att observera
+det totala antalet loggade adresser.
 
-Programmet kollar endast om det har varit försök och loggar misslyckanden
 
-som det står nu måste alla  tre datasetfiler finnas i katalogen "data" (auth,access, och firewall.log) som begränsar vilka typer av loggar som kan testas, så programmet är inte avsedd för en godtycklig mängd logfiler.
+som det står nu måste alla  tre datasetfiler finnas i katalogen "data" (auth,access, och firewall.log) som begränsar vilka typer av loggar som kan testas, så programmet är inte avsedd för en godtycklig mängd logfiler av andra typer av namn.
 
 ### Testning
 
