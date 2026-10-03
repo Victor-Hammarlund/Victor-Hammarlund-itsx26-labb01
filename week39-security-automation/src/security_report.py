@@ -48,7 +48,7 @@ def getLog(path):
 
 # ----------------------------------------#
 
-# Get semi-detailed view of failed attempts
+# Return status and occurance count of IP-address
 def getBadActionFields(fileName, ioc_list):
         for path, name in paths.items():
             if name == fileName:
@@ -200,10 +200,10 @@ def clearOutputFile():
         clear.write("")
 
 # ----------------------------------------#
-
-def occurance(ioc,_list):
+# Return dictionary of suspicious IP-address and their occurance count
+def occurance(ioc,logFile):
     matches= {}
-    for i in _list:
+    for i in logFile:
         if i in ioc:
             if i not in matches:
                 matches[i] = 0
@@ -212,6 +212,7 @@ def occurance(ioc,_list):
 
 # ----------------------------------------#
 
+# Write summary
 def summary(badIps):
     with open(pathOutput, "a") as result:
             pattern = patternMatching(badIps)
@@ -225,6 +226,7 @@ def summary(badIps):
 # ----------------------------------------#
 def checkStructure():
 
+    # Counter for missing paths
     missingPaths =0
     print("Beginning structure control")
     
@@ -233,15 +235,17 @@ def checkStructure():
         check = Path(i)
         if check.exists():
             print(f"File exists : {i}")
+        # Notify if path is missing
         else:
             print(f"Missing path or file. Expected path : {i}")
             missingPaths +=1
             
             
-    
+    # Check for expected file path to suspicious IP-addresses
     sus = Path(pathSuspicious)
     if sus.exists():
         print(f"File exists : {pathSuspicious}")
+    # Notify if path is missing
     else:
         print(f"Missing path or file. Expected path : {pathSuspicious}")
         missingPaths += 1 
@@ -251,12 +255,15 @@ def checkStructure():
     while True:
 
         output = Path(pathOutput)
+        # Check if file exist at expected path
         if output.exists():
             print(f"File exists : {pathOutput}")
             break
+        # Attempt to create file and handle exceptions
         else:
             print(f"Missing path or file. Expected path : {pathOutput}")
             print(f"Attempting creation of {pathOutput}")
+      
             try:
                 with open(pathOutput, "a") as file:
                     pass
@@ -270,6 +277,7 @@ def checkStructure():
             if attempts >= 3:
                 sys.exit(f"Failed to create {pathOutput}\nExiting . . .")
 
+    # Close program if any expected log file is missing
     if missingPaths >= 1:
         sys.exit("Paths are missing or mislocated\nExiting ...")
        
@@ -284,22 +292,32 @@ def checkStructure():
 #/////////////////////////////////////////#
 def main():
     checkStructure()
+    # Reset the report
     clearOutputFile()
+    
     print("Starting Security Report!\n")
     badIps = getSuspiciousIps()
 
+    # loop through each declared log file 
+    # name = shorter name for log file
     for path, name in paths.items():
+        # Strings to be used as arguments in writeReport()
         formatedBadIps=""
         formatedIPs = ""
+        
+        # Get occurance of each ip in log file 
         ips=getLog(path)
         match_ips = occurance(badIps, ips)
 
+        # Format descriptive string for report
         for x, y in match_ips.items():
             formatedBadIps+=f"{x} : occurs {y} times\n"
         
         for ip in ips:
             formatedIPs+=f"{ip}\n"
+        
         writeReport(name,formatedIPs, formatedBadIps, len(match_ips))
+    # Append summary to end of report
     summary(badIps)
 
         
@@ -313,27 +331,3 @@ def main():
 #                   Run                   #
 #/////////////////////////////////////////#
 main()
-
-#if not source:
-#skipped += 1
-#continue
-#Show more lines
-#
-#och sedan rapportera:
-#
-#Plain Text
-#Skipped rows: 3 (missing src field)
-'''
-Observation:
-2 IP-adresser matchade IOC-listan.
-
-Conclusion:
-Dessa adresser förekommer i loggarna och bör granskas vidare.
-
-Uncertainty:
-Datasetet visar endast förekomst och bekräftar inte skadlig aktivitet.
-
-Security significance:
-Matchningen kan hjälpa till att prioritera fortsatt analys.
-'''
-
