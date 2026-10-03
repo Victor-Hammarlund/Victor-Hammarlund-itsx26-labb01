@@ -3,39 +3,47 @@
                 
 ║SECURITY REPORT                                      ║
                 
-File Analized: access                                     
-
+File Analized: access log                                    
                 
 These IP's are logged
- --------------------
- 203.0.113.15
-  192.0.2.25
-  203.0.113.15
-  198.51.100.44
- 
+########################
+203.0.113.15
+192.0.2.25
+203.0.113.15
+198.51.100.44
 
                 
 Possible IOC's
- --------------------
-203.0.113.15: 4 unauthorized request(s)
+########################
+203.0.113.15: 2 unauthorized request(s)
 Non IOC failed attempt(s)
 0
 
                 
- --------------------
-                
 Observation:
+########################
                 
-Times IOC-IPs occur in the log: 2
-                
- --------------------
+There are 2 suspicious IP address(es) that occur
+in this logfile:
+203.0.113.15 : occurs 2 times
+198.51.100.44 : occurs 1 times
+
                 
 Conclusion:
+########################
                 
-IP-adresses listed in the suspicious dataset occur in this log
+IP-adresses listed in the
+suspicious dataset occur in this log
 and might need further investigation
                 
- --------------------
+
+                
+Uncertainty:
+########################
+                
+A non IOC labeled failed attempt does not
+equal that it is safe or dangerous,
+could be worth looking into.
                 
 ╚═════════════════════════════════════════════════════╝
 ╔═════════════════════════════════════════════════════╗
@@ -43,42 +51,50 @@ and might need further investigation
                 
 ║SECURITY REPORT                                      ║
                 
-File Analized: Authentication                                     
-
+File Analized: Authentication log                                    
                 
 These IP's are logged
- --------------------
- 203.0.113.15
-  203.0.113.15
-  203.0.113.15
-  192.0.2.25
-  198.51.100.44
-  skipped 1 line(s). Missing src field
- 
+########################
+203.0.113.15
+203.0.113.15
+203.0.113.15
+192.0.2.25
+198.51.100.44
+skipped 1 line(s). Missing src field
 
                 
 Possible IOC's
- --------------------
-203.0.113.15: 4 failed login attempt(s)
-198.51.100.44: 2 failed login attempt(s)
+########################
+203.0.113.15: 3 failed login attempt(s)
+198.51.100.44: 1 failed login attempt(s)
 Non IOC failed attempt(s)
 0
 
                 
- --------------------
-                
 Observation:
+########################
                 
-Times IOC-IPs occur in the log: 2
-                
- --------------------
+There are 2 suspicious IP address(es) that occur
+in this logfile:
+203.0.113.15 : occurs 3 times
+198.51.100.44 : occurs 1 times
+
                 
 Conclusion:
+########################
                 
-IP-adresses listed in the suspicious dataset occur in this log
+IP-adresses listed in the
+suspicious dataset occur in this log
 and might need further investigation
                 
- --------------------
+
+                
+Uncertainty:
+########################
+                
+A non IOC labeled failed attempt does not
+equal that it is safe or dangerous,
+could be worth looking into.
                 
 ╚═════════════════════════════════════════════════════╝
 ╔═════════════════════════════════════════════════════╗
@@ -86,39 +102,47 @@ and might need further investigation
                 
 ║SECURITY REPORT                                      ║
                 
-File Analized: firewall                                     
-
+File Analized: firewall log                                    
                 
 These IP's are logged
- --------------------
- 192.0.2.25
-  203.0.113.15
-  203.0.113.99
- 
+########################
+192.0.2.25
+203.0.113.15
+203.0.113.99
 
                 
 Possible IOC's
- --------------------
+########################
 203.0.113.15: 1 denied/dropped connection(s)
 203.0.113.99: 1 denied/dropped connection(s)
 Non IOC failed attempt(s)
 0
 
                 
- --------------------
-                
 Observation:
+########################
                 
-Times IOC-IPs occur in the log: 2
-                
- --------------------
+There are 2 suspicious IP address(es) that occur
+in this logfile:
+203.0.113.15 : occurs 1 times
+203.0.113.99 : occurs 1 times
+
                 
 Conclusion:
+########################
                 
-IP-adresses listed in the suspicious dataset occur in this log
+IP-adresses listed in the
+suspicious dataset occur in this log
 and might need further investigation
                 
- --------------------
+
+                
+Uncertainty:
+########################
+                
+A non IOC labeled failed attempt does not
+equal that it is safe or dangerous,
+could be worth looking into.
                 
 ╚═════════════════════════════════════════════════════╝
 ╔═════════════════════════════════════════════════════╗
@@ -126,38 +150,43 @@ and might need further investigation
                 
 ║SECURITY REPORT                                      ║
                 
-File Analized: noHits                                     
-
+File Analized: noHits log                                    
                 
 These IP's are logged
- --------------------
- 203.0.113.16
-  192.0.2.25
-  203.0.113.16
-  198.51.100.43
- 
+########################
+203.0.113.16
+192.0.2.25
+203.0.113.16
+198.51.100.43
 
                 
 Possible IOC's
- --------------------
+########################
 No IOC-IPs present
 but there were failed attempt(s) from:
 203.0.113.16
                 
- --------------------
-                
 Observation:
+########################
                 
-Times IOC-IPs occur in the log: 0
-                
- --------------------
+There are no source addresses
+in this log that match
+with the list of suspicious addresses
                 
 Conclusion:
+########################
                 
 No IP from IOC-list logged in the noHits logs.
 But may still contain unautharized attempts
                 
- --------------------
+
+                
+Uncertainty:
+########################
+                
+A non IOC labeled failed attempt does not
+equal that it is safe or dangerous,
+could be worth looking into.
                 
 ╚═════════════════════════════════════════════════════╝
 
@@ -171,21 +200,21 @@ SUMMARY
             
 203.0.113.15 occurs in following logs:
 	access: 2 times
-	Authentication: 5 times
-	firewall: 6 times
-	noHits: 6 times
+	Authentication: 3 times
+	firewall: 1 times
+	noHits: 0 times
 
 198.51.100.44 occurs in following logs:
 	access: 1 times
-	Authentication: 2 times
-	firewall: 2 times
-	noHits: 2 times
+	Authentication: 1 times
+	firewall: 0 times
+	noHits: 0 times
 
 203.0.113.99 occurs in following logs:
 	access: 0 times
 	Authentication: 0 times
 	firewall: 1 times
-	noHits: 1 times
+	noHits: 0 times
 
             
 ╚═════════════════════════════════════════════════════╝
