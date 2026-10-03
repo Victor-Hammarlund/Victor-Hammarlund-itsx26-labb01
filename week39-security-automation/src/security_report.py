@@ -16,11 +16,13 @@ paths = {pathAccess : "access", pathAuth: "Authentication", pathFirewall:"firewa
 #/////////////////////////////////////////#
 #               Functions                 #
 #/////////////////////////////////////////#
+# Read and return suspicious IP addresses
 def getSuspiciousIps():
     ips=[]
     with open(pathSuspicious, "r", encoding="utf-8") as badIps:
         for i in badIps:
             ips.append(i.strip())
+    
     return ips
 # ----------------------------------------#
 def getLog(path):
@@ -28,20 +30,25 @@ def getLog(path):
     skippedLines =0
     
     logs=[]
+    # Open arbitrary log file
     with open(path,"r",encoding="utf-8") as logIps:
+    # Scan entire log file after source addresses
         for line in logIps:
             fields=line.split()
             source = [f for f in fields if f.startswith("src=")]
+            # Note lines missing a source field
             if not source:
                 skippedLines+=1
                 continue
             logs.append(source[0].split("=", 1)[1])
+    # Append the amount of skipped lines to logs
     if skippedLines >= 1:
         logs.append(f"skipped {skippedLines} line(s). Missing src field")
     return logs
 
 # ----------------------------------------#
 
+# Get semi-detailed view of failed attempts
 def getBadActionFields(fileName, ioc_list):
         for path, name in paths.items():
             if name == fileName:
@@ -55,23 +62,23 @@ def getBadActionFields(fileName, ioc_list):
                         # auth.log
                         if fileName == "Authentication":
                             if "Failed" in line:
+                               print(f"LINE\n{line}\n")
                                source = [f for f in line.split() if f.startswith("src=")]
-                            if source:
+                               if source:
                                 ip = source[0].split("=", 1)[1]
-
+                                print(f"IP TO ADD\n{ip}\n")
                                 if ip in ioc_list:
                                     suspicious.append(ip)
                                 elif ip not in unknown:
                                     unknown.append(ip)
-                                
-                                   
-                                
+                                                                  
+
 
                         # access.log
                         elif fileName == "access" or fileName == "noHits":
                             if "status=401" in line:
                                source = [f for f in line.split() if f.startswith("src=")]
-                            if source:
+                               if source:
                                 ip = source[0].split("=", 1)[1]
 
                                 if ip in ioc_list:
@@ -89,10 +96,10 @@ def getBadActionFields(fileName, ioc_list):
                                     if ip in ioc_list:
                                         suspicious.append(ip)
                                     elif ip not in unknown:
-                                        unknown.append(ip)
+                                            unknown.append(ip)
                             
                                 
-
+                print(f"{fileName} {suspicious}")
                 counts = occurance(ioc_list, suspicious)
               
                     
@@ -145,6 +152,7 @@ def patternMatching(ioc_ips):
                     if ioc in line:
                         match += 1
             result.append(f"{name}: {match} times")
+            match = 0
          pattern.append(f"{ioc} occurs in following logs:\n\t{"\n\t".join(result)}\n")
                 
     return pattern
@@ -156,24 +164,31 @@ def patternMatching(ioc_ips):
 
 def writeReport(fileName,loggedIps,badIps, IOC):
     str_conclusion = ""
+    str_observation = ""
     if IOC < 1:
         str_conclusion += f"No IP from IOC-list logged in the {fileName} logs.\nBut may still contain unautharized attempts"
     else:
-        str_conclusion += f"IP-adresses listed in the suspicious dataset occur in this log\nand might need further investigation"
+        str_conclusion += f"IP-adresses listed in the\nsuspicious dataset occur in this log\nand might need further investigation"
+
+    if IOC >=1:
+        str_observation = f"There are {IOC} suspicious IP address(es) that occur\nin this logfile:\n{badIps}"
+    else:
+        str_observation = f"There are no source addresses\nin this log that match\nwith the list of suspicious addresses"
+
     
     with open(pathOutput, "a", encoding="utf-8") as out:
         output = (f'''╔═════════════════════════════════════════════════════╗\n
                 \n║SECURITY REPORT                                      ║
-                \nFile Analized: {fileName}                                     \n
-                \nThese IP's are logged\n --------------------\n{loggedIps}\n
-                \nPossible IOC's\n --------------------\n{getBadActionFields(fileName,getSuspiciousIps() )}
-                \n --------------------
-                \nObservation:
-                \nTimes IOC-IPs occur in the log: {IOC}
-                \n --------------------
-                \nConclusion:
+                \nFile Analized: {fileName} log                                    
+                \nThese IP's are logged\n########################\n{loggedIps}
+                \nPossible IOC's\n########################\n{getBadActionFields(fileName,getSuspiciousIps() )}
+                \nObservation:\n########################
+                \n{str_observation}
+                \nConclusion:\n########################
                 \n{str_conclusion}
-                \n --------------------
+                \n
+                \nUncertainty:\n########################
+                \nA non IOC labeled failed attempt does not\nequal that it is safe or dangerous,\ncould be worth looking into.
                 \n╚═════════════════════════════════════════════════════╝''')
         out.write(f"{output}\n")     
     
@@ -280,10 +295,10 @@ def main():
         match_ips = occurance(badIps, ips)
 
         for x, y in match_ips.items():
-            formatedBadIps+=f"{x} : occurs {y} times\n "
+            formatedBadIps+=f"{x} : occurs {y} times\n"
         
         for ip in ips:
-            formatedIPs+=f" {ip}\n "
+            formatedIPs+=f"{ip}\n"
         writeReport(name,formatedIPs, formatedBadIps, len(match_ips))
     summary(badIps)
 
