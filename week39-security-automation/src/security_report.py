@@ -16,7 +16,7 @@ paths = {pathAccess : "access", pathAuth: "Authentication", pathFirewall:"firewa
 #/////////////////////////////////////////#
 #               Functions                 #
 #/////////////////////////////////////////#
-# Read and return suspicious IP addresses
+# Read and return suspicious IP-address list
 def getSuspiciousIps():
     ips=[]
     with open(pathSuspicious, "r", encoding="utf-8") as badIps:
@@ -30,7 +30,7 @@ def getLog(path):
     skippedLines =0
     
     logs=[]
-    # Open arbitrary log file
+    # Open log file
     with open(path,"r",encoding="utf-8") as logIps:
     # Scan entire log file after source addresses
         for line in logIps:
@@ -50,25 +50,28 @@ def getLog(path):
 
 # Return status and occurance count of IP-address
 def getBadActionFields(fileName, ioc_list):
+        # Loop through all log files
         for path, name in paths.items():
             if name == fileName:
                 
                 suspicious = []
                 unknown = []
-
+                # Open logfile in read mode
                 with open(path, "r", encoding="utf-8") as log:
                     for line in log:
 
                         # auth.log
                         if fileName == "Authentication":
+                            # Append suspicious source address that failed to login to list
                             if "Failed" in line:
-                               print(f"LINE\n{line}\n")
+                               print(f"LINE\n{line}\n")#Troubleshooting
                                source = [f for f in line.split() if f.startswith("src=")]
                                if source:
                                 ip = source[0].split("=", 1)[1]
-                                print(f"IP TO ADD\n{ip}\n")
+                                print(f"IP TO ADD\n{ip}\n")#Troubleshooting
                                 if ip in ioc_list:
                                     suspicious.append(ip)
+                                # If ip failed to login but is not listed as ioc append to unknown
                                 elif ip not in unknown:
                                     unknown.append(ip)
                                                                   
@@ -76,11 +79,12 @@ def getBadActionFields(fileName, ioc_list):
 
                         # access.log
                         elif fileName == "access" or fileName == "noHits":
+                            # Append addresses that made an unauthorized access attempt
                             if "status=401" in line:
                                source = [f for f in line.split() if f.startswith("src=")]
                                if source:
                                 ip = source[0].split("=", 1)[1]
-
+                        
                                 if ip in ioc_list:
                                     suspicious.append(ip)
                                 elif ip not in unknown:
@@ -88,6 +92,7 @@ def getBadActionFields(fileName, ioc_list):
 
                         # firewall.log
                         elif fileName == "firewall":
+                            # Append addresses that were dropped or denied by the firewall
                             if "DENY" in line or "DROP" in line:
                                source = [f for f in line.split() if f.startswith("src=")]
                                if source:
@@ -99,7 +104,7 @@ def getBadActionFields(fileName, ioc_list):
                                             unknown.append(ip)
                             
                                 
-                print(f"{fileName} {suspicious}")
+                # organize and count occurances of each suspicious ip
                 counts = occurance(ioc_list, suspicious)
               
                     
@@ -110,7 +115,7 @@ def getBadActionFields(fileName, ioc_list):
                     return f"No IOC activity found in {fileName}"
             
                 
-
+                # Now create a list of the addresses with occurance count, then format it for report 
                 if fileName == "Authentication":
                     for ip, count in counts.items():
                         result.append(
@@ -129,11 +134,12 @@ def getBadActionFields(fileName, ioc_list):
                             f"{ip}: {count} denied/dropped connection(s)"
                         )
 
+                # Return formated strings and failed attempts from unknown addresses
                 return f"{"\n".join(result)}\nNon IOC failed attempt(s)\n{len(unknown)}\n{"\n".join(unknown)}"
             
 
 
-
+        # Unexpected file names are handled
         return f"File '{fileName}' not found"
                     
     
@@ -141,18 +147,24 @@ def getBadActionFields(fileName, ioc_list):
 
 # ----------------------------------------#
 
+# Summerize which logs a ip appears in
 def patternMatching(ioc_ips):
     pattern = []
+
+   # Itterate through all the items in the given parameter (suspicious IP-addresses)
     for ioc in ioc_ips:
          result = []
          match =0
+         # Add 1 for every match in file
          for path, name in paths.items():
             with open(path, "r", encoding="utf-8") as file:
                 for line in file:
                     if ioc in line:
                         match += 1
             result.append(f"{name}: {match} times")
+            # Reset for next file
             match = 0
+         # Append a formated string with matches to list
          pattern.append(f"{ioc} occurs in following logs:\n\t{"\n\t".join(result)}\n")
                 
     return pattern
@@ -193,7 +205,7 @@ def writeReport(fileName,loggedIps,badIps, IOC):
         out.write(f"{output}\n")     
     
 # ----------------------------------------#
-
+# Logic for clearing the output file for new report generation
 def clearOutputFile():
     print("Clearing output file . . .")
     with open(pathOutput, "w") as clear:
