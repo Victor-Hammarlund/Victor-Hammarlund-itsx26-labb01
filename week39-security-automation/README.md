@@ -1,3 +1,29 @@
+### System
+
+#### Programmet har körts i :
+Icon name: computer-container
+
+  Chassis: container 
+
+Machine ID: 5a0188839c8947459fcc48fd2354d14f
+
+  Boot ID: 8e1119c98a934065b66c9c6c4bf70311
+
+  Virtualization: wsl
+
+Operating System: Ubuntu 26.04 LTS                       
+
+   Kernel: Linux 6.18.33.2-microsoft-standard-WSL2
+
+  Architecture: x86-64
+
+#### Och 
+Lokal Linux
+
+Fedora Linux 44 (KDE Plasma Desktop Edition) x86_64
+
+Kernel :  Linux 7.1.13-200.fc44.x86_64
+
 ### Syfte
 Syftet Med programmet är att få en överblick på loggar där misstänksamma IP-addresser har gjort försök mot en server.
 
@@ -5,6 +31,7 @@ Syftet Med programmet är att få en överblick på loggar där misstänksamma I
 Basic SOC dataset for ITSX26 week39.
 
 ### Kör instruktioner
+
 Programmet använder relativa filvägar, vilket innebär att strukturen är viktigt
 
 så länge strukturen ser ut så här och dataset-namnen är oförändrade

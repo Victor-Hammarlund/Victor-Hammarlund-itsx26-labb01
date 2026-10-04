@@ -18,8 +18,13 @@ Dessutom används ett ytterliggare ligfil som demonstrerar när det inte föreko
 ### Observation
 
 Programmet matchar misstänksamma källor mot fält i loggarna där ett misslyckat försök har gjorts och räknar hur många försök som gjordes från den källan.
+<p>
+<img src="..\docs\screenshots\observation.png">
+<p>
 Under sammanfattningen så beskrivs vilka filer som varje misstänksamt markerad IP-address kan finnas.
-
+<p>
+<img src="..\docs\screenshots\summary.png">
+<p>
 
 
 ### Slutsats
